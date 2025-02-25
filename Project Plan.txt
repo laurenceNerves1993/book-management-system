@@ -42,3 +42,13 @@ Category - CRUD
     (Pop up)
 
 
+- php artisan make:migration create_(table-name)_table
+- php artisan migrate(moving all created database table in database)
+- php artisan make:Model(creating model and make a relationship to other table)
+- php artisan make:controller (Controller name)
+- creating route for BookController CRUD
+
+- php artisan make:factory (ModelnameFactory)
+- php artisan make:seeder databaseSeeder(creating dummy accounts)
+
+-- CRUD
