@@ -52,3 +52,36 @@ Category - CRUD
 - php artisan make:seeder databaseSeeder(creating dummy accounts)
 
 -- CRUD
+
+
+Clone from github repository ::
+git clone https://github.com/username/repository.git
+cd repository-name
+composer install
+cp .env.example .env
+php artisan key:generate
+
+Edit the .env file and update:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+php artisan migrate
+php artisan serve
+
+Push Project to repo::
+git add .
+git commit -m "Message...."
+git push
+
+Need to understand and improve::
+AJAX Request
+Fetch, axios and async await
+API method (GET, POST, PUT, DELETE)
+JSON.stringify and JSON.parse
+HTTP Status Code (404, 201, etc....)
+Database Rollback and backup
+

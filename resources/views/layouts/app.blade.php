@@ -153,7 +153,7 @@
   </style>
 
 </head>
-<body>
+<body style="padding: 50px">
   <nav>
     <ul>
       <li><a href="{{ route('books.index') }}">Books</a></li>

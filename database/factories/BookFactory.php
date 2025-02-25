@@ -14,6 +14,7 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence,
             'author_id' => \App\Models\Author::factory(),
             'category_id' => \App\Models\Category::factory(),
+            'description' => $this->faker->paragraph,
         ];
     }
 }

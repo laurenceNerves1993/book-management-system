@@ -7,42 +7,41 @@ use App\Models\Author;
 
 class AuthorController extends Controller
 {
-    public function index()
-    {
-        $authors = Author::all();
+    public function index() {
+        // $authors = Author::all();
+        $authors = Author::orderBy('id', 'desc')->get();
         return view('authors.index', compact('authors'));
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        $author = Author::create([
-            'name' => $request->name,
-        ]);
-
-        return response()->json(['success' => 'Author added successfully.', 'author' => $author]);
+    public function store(Request $request) {
+        $request->validate([ 'newAuthor' => 'required|string|max:255', ]); // For form validation
+        $author = Author::create([ 'name' => $request->newAuthor, ]);
+        return response()->json(['alertMessage' => 'Author added successfully!'], 201);
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required',
-        ]);
+    public function destroy($id) {
+        $author = Author::find($id); // to get the author data
+        if (!$author) {
+            return response()->json(['alertMessage' => 'Author not found'], 404);
+        } else {
+            $author->delete(); // Database deletion
+            return response()->json(['alertMessage' => 'Author deleted successfully!']);
+        }
+    }
+    
+    public function update(Request $request, $id) {
+        $request->validate(['updateAuthor' => 'required|string|max:255']);
+        $author = Author::find($id);
+        if (!$author) {
+            return response()->json(['alertMessage' => 'Author not found'], 404);
+        } else {
+            $author->name = $request->updateAuthor;
+            $author->save();
 
-        $author = Author::findOrFail($id);
-        $author->update([
-            'name' => $request->name,
-        ]);
-
-        return response()->json(['success' => 'Author updated successfully.', 'author' => $author]);
+            return response()->json(['alertMessage' => 'Author updated successfully!']);
+        }
+        
     }
 
-    public function destroy($id)
-    {
-        Author::findOrFail($id)->delete();
-        return response()->json(['success' => 'Author deleted successfully.']);
-    }
+    
 }
