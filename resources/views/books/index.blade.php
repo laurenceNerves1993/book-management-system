@@ -4,10 +4,20 @@
 
 @section('content')
 
-    <div class="title-container">
-        <h1>Books List</h1>
-        <button class="add-btn" onClick="addBookRedirection()">Add Book</button>
-    </div>
+<div class="title-container">
+        <h1>Book List</h1>
+        <button class="add-btn" id="addBook">Add Book</button>
+        <div class="overlay" id="overlay"></div>
+        <div class="popup" id="popup">
+        <h2>Enter Book Title</h2>
+        <form id="bookForm">
+            <input type="text" id="bookName" placeholder="Enter title" required>
+            <br><br>
+            <button type="submit" class="submit-btn">Submit</button>
+            <button type="button" id="closeButton" class="cancel-btn">Cancel</button>
+        </form>
+        </div>
+        </div>
     
 
     <table border="1" width="100%">
@@ -43,45 +53,6 @@
             @endforelse
         </tbody>
     </table>
-
-    <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" class="modal-overlay">
-        <div class="modal-container">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h3>Confirm Delete</h3>
-            <p>Are you sure you want to delete this book?</p>
-
-            <div class="modal-buttons">
-                <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
-                <button type="submit" class="delete-btn">Delete</button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <script>
-
-        function addBookRedirection() {
-            window.location.href = "../books/add";
-        }
-
-        function openModal() {
-            document.getElementById('deleteModal').style.display = 'block'; // Show modal
-        }
-
-        function closeModal() {
-            document.getElementById('deleteModal').style.display = 'none'; // Hide modal
-        }
-        
-        // Close modal if user clicks outside it
-        window.onclick = function(event) {
-            let modal = document.getElementById('deleteModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
 
    
 @endsection

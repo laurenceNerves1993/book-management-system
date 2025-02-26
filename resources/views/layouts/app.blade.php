@@ -11,6 +11,7 @@
         padding: 0;
         box-sizing: border-box;
         font-family:Verdana, Geneva, Tahoma, sans-serif;
+        user-select: none;
     }
     body, html {
       font-size: 0.9em;

@@ -40,7 +40,6 @@ class AuthorController extends Controller
 
             return response()->json(['alertMessage' => 'Author updated successfully!']);
         }
-        
     }
 
     

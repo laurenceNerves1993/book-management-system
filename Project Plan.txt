@@ -54,7 +54,7 @@ Category - CRUD
 -- CRUD
 
 
-Clone from github repository ::
+Clone from github repository to local PC ::
 git clone https://github.com/username/repository.git
 cd repository-name
 composer install
@@ -76,6 +76,9 @@ Push Project to repo::
 git add .
 git commit -m "Message...."
 git push
+
+Existing project on local host::
+git pull origin main
 
 Need to understand and improve::
 AJAX Request
