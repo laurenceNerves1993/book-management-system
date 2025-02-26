@@ -7,15 +7,16 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index(){
-      $categories =Category::all();
+    public function index() {
+      $categories = Category::orderBy("id", "desc")->get();
       return view("categories.index", compact("categories"));
     }
+
     public function store(Request $request) {
       $request->validate([ 'newCategory' => 'required|string|max:255', ]); // For form validation
       $category = Category::create([ 'name' => $request->newCategory, ]);
       return response()->json(['alertMessage' => 'Category added successfully!'], 201);
-  }
+    }
 
     public function destroy($id) {
         $category = Category::find($id); // to get the category data
@@ -25,7 +26,7 @@ class CategoryController extends Controller
             $category->delete(); // Database deletion
             return response()->json(['alertMessage' => 'Category deleted successfully!']);
         }
-  }
+    }
   
     public function update(Request $request, $id) {
         $request->validate(['updateCategory' => 'required|string|max:255']);
@@ -38,5 +39,10 @@ class CategoryController extends Controller
 
             return response()->json(['alertMessage' => 'Category updated successfully!']);
         }
-  }
+    }
+
+    public function getCategories() {
+        $categories = Category::orderBy("name", "asc")->get();
+        return response()->json($categories);
+    }
 }

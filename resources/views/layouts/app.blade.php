@@ -47,10 +47,11 @@
         margin-bottom: 20px;
     }
 
-    input {
+    input, textarea, select {
         font-size: 1em;
         border-radius: 5px;
         padding: 8px 15px;
+        width: 100%;
     }
 
     /* Button Styling */

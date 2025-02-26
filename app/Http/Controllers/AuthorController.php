@@ -42,5 +42,10 @@ class AuthorController extends Controller
         }
     }
 
+    public function getAuthors() {
+        $authors = Author::orderBy("name", "asc")->get();
+        return response()->json($authors);
+    }
+
     
 }
