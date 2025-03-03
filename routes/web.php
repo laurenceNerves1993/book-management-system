@@ -8,7 +8,8 @@ use App\Http\Controllers\CategoryController;
 // Book Route
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::post('/books', [BookController::class, 'store'])->name('books.store'); // add data always POST method
-
+Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy'); // DELETE method to remove data
+Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update'); // PUT method for updating data
 // Author Route
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store'); // add data always POST method
